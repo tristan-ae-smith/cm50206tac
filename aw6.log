@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507626</millis>
+  <sequence>0</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Starting TAC AgentWare version Beta 9</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507627</millis>
+  <sequence>1</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Using agent implementation se.sics.tac.aw.DummyAgent</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507627</millis>
+  <sequence>2</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Using TAC server tac.cs.bath.ac.uke at port 46501</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507630</millis>
+  <sequence>3</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>Connecting to server tac.cs.bath.ac.uke:46501</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507800</millis>
+  <sequence>4</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>SEVERE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>connection to server failed:</message>
+  <exception>
+    <message>java.net.UnknownHostException: tac.cs.bath.ac.uke</message>
+    <frame>
+      <class>java.net.AbstractPlainSocketImpl</class>
+      <method>connect</method>
+      <line>178</line>
+    </frame>
+    <frame>
+      <class>java.net.SocksSocketImpl</class>
+      <method>connect</method>
+      <line>391</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>579</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>528</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>425</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>208</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>doConnect</method>
+      <line>124</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>init</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACConnection</class>
+      <method>init</method>
+      <line>35</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>connect</method>
+      <line>394</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>&lt;init&gt;</method>
+      <line>341</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>main</method>
+      <line>2176</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2013-10-02T11:58:27</date>
+  <millis>1380711507824</millis>
+  <sequence>5</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>WARNING</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>connect</method>
+  <thread>1</thread>
+  <message>could not connect to server tac.cs.bath.ac.uke at port 46501 (will retry in 5 seconds)</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:32</date>
+  <millis>1380711512825</millis>
+  <sequence>6</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>Connecting to server tac.cs.bath.ac.uke:46501</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:32</date>
+  <millis>1380711512826</millis>
+  <sequence>7</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>SEVERE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>connection to server failed:</message>
+  <exception>
+    <message>java.net.UnknownHostException: tac.cs.bath.ac.uke</message>
+    <frame>
+      <class>java.net.AbstractPlainSocketImpl</class>
+      <method>connect</method>
+      <line>178</line>
+    </frame>
+    <frame>
+      <class>java.net.SocksSocketImpl</class>
+      <method>connect</method>
+      <line>391</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>579</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>528</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>425</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>208</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>doConnect</method>
+      <line>124</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>init</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACConnection</class>
+      <method>init</method>
+      <line>35</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>connect</method>
+      <line>394</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>&lt;init&gt;</method>
+      <line>341</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>main</method>
+      <line>2176</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2013-10-02T11:58:32</date>
+  <millis>1380711512827</millis>
+  <sequence>8</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>WARNING</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>connect</method>
+  <thread>1</thread>
+  <message>could not connect to server tac.cs.bath.ac.uke at port 46501 (will retry in 5 seconds)</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:37</date>
+  <millis>1380711517828</millis>
+  <sequence>9</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>Connecting to server tac.cs.bath.ac.uke:46501</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:37</date>
+  <millis>1380711517829</millis>
+  <sequence>10</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>SEVERE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>connection to server failed:</message>
+  <exception>
+    <message>java.net.UnknownHostException: tac.cs.bath.ac.uke</message>
+    <frame>
+      <class>java.net.AbstractPlainSocketImpl</class>
+      <method>connect</method>
+      <line>178</line>
+    </frame>
+    <frame>
+      <class>java.net.SocksSocketImpl</class>
+      <method>connect</method>
+      <line>391</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>579</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>528</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>425</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>208</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>doConnect</method>
+      <line>124</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>init</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACConnection</class>
+      <method>init</method>
+      <line>35</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>connect</method>
+      <line>394</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>&lt;init&gt;</method>
+      <line>341</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>main</method>
+      <line>2176</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2013-10-02T11:58:37</date>
+  <millis>1380711517832</millis>
+  <sequence>11</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>WARNING</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>connect</method>
+  <thread>1</thread>
+  <message>could not connect to server tac.cs.bath.ac.uke at port 46501 (will retry in 5 seconds)</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:42</date>
+  <millis>1380711522836</millis>
+  <sequence>12</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>FINE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>Connecting to server tac.cs.bath.ac.uke:46501</message>
+</record>
+<record>
+  <date>2013-10-02T11:58:42</date>
+  <millis>1380711522837</millis>
+  <sequence>13</sequence>
+  <logger>se.sics.tac.aw.TACReader</logger>
+  <level>SEVERE</level>
+  <class>se.sics.tac.aw.TACReader</class>
+  <method>doConnect</method>
+  <thread>1</thread>
+  <message>connection to server failed:</message>
+  <exception>
+    <message>java.net.UnknownHostException: tac.cs.bath.ac.uke</message>
+    <frame>
+      <class>java.net.AbstractPlainSocketImpl</class>
+      <method>connect</method>
+      <line>178</line>
+    </frame>
+    <frame>
+      <class>java.net.SocksSocketImpl</class>
+      <method>connect</method>
+      <line>391</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>579</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>528</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>425</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>&lt;init&gt;</method>
+      <line>208</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>doConnect</method>
+      <line>124</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACReader</class>
+      <method>init</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACConnection</class>
+      <method>init</method>
+      <line>35</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>connect</method>
+      <line>394</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>&lt;init&gt;</method>
+      <line>341</line>
+    </frame>
+    <frame>
+      <class>se.sics.tac.aw.TACAgent</class>
+      <method>main</method>
+      <line>2176</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2013-10-02T11:58:42</date>
+  <millis>1380711522838</millis>
+  <sequence>14</sequence>
+  <logger>se.sics.tac.aw.TACAgent</logger>
+  <level>WARNING</level>
+  <class>se.sics.tac.aw.TACAgent</class>
+  <method>connect</method>
+  <thread>1</thread>
+  <message>could not connect to server tac.cs.bath.ac.uke at port 46501 (will retry in 5 seconds)</message>
+</record>
+</log>
