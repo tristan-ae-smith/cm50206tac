@@ -131,208 +131,313 @@ import java.util.logging.*;
 
 public class DummyAgent extends AgentImpl {
 
-  private static final Logger log =
-    Logger.getLogger(DummyAgent.class.getName());
+	private static final Logger log =
+		Logger.getLogger(DummyAgent.class.getName());
 
-  private static final boolean DEBUG = false;
+	private static final boolean DEBUG = false;
 
-  private float[] prices;
+	private static final int FLIGHTS = 8;
 
-  protected void init(ArgEnumerator args) {
-    prices = new float[agent.getAuctionNo()];
-  }
+	//------------------ int z = ??;	// z per flight : bound on final peturbation. Unknown
+	private static final int c = 10;	// -c : lower bound of possible z values
+	private static final int d = 30;	//  d : upper bound for 
+	private static final int T = 540; //  T : total game time in seconds
 
-  public void quoteUpdated(Quote quote) {
-    int auction = quote.getAuction();
-    int auctionCategory = agent.getAuctionCategory(auction);
-    if (auctionCategory == TACAgent.CAT_HOTEL) {
-      int alloc = agent.getAllocation(auction);
-      if (alloc > 0 && quote.hasHQW(agent.getBid(auction)) &&
-	  quote.getHQW() < alloc) {
-	Bid bid = new Bid(auction);
-	// Can not own anything in hotel auctions...
-	prices[auction] = quote.getAskPrice() + 50;
-	bid.addBidPoint(alloc, prices[auction]);
-	if (DEBUG) {
-	  log.finest("submitting bid with alloc="
-		     + agent.getAllocation(auction)
-		     + " own=" + agent.getOwn(auction));
+	private float[] prices;
+	private Map<Integer, Map<Integer, Float>> Pz;
+
+	protected void init(ArgEnumerator args) {
+		prices = new float[agent.getAuctionNo()];
+		Pz = new TreeMap<Integer, Map<Integer, Float>>();
 	}
-	agent.submitBid(bid);
-      }
-    } else if (auctionCategory == TACAgent.CAT_ENTERTAINMENT) {
-      int alloc = agent.getAllocation(auction) - agent.getOwn(auction);
-      if (alloc != 0) {
-	Bid bid = new Bid(auction);
-	if (alloc < 0)
-	  prices[auction] = 200f - (agent.getGameTime() * 120f) / 720000;
-	else
-	  prices[auction] = 50f + (agent.getGameTime() * 100f) / 720000;
-	bid.addBidPoint(alloc, prices[auction]);
-	if (DEBUG) {
-	  log.finest("submitting bid with alloc="
-		     + agent.getAllocation(auction)
-		     + " own=" + agent.getOwn(auction));
+
+	public void quoteUpdated(Quote quote) {
+		int auction = quote.getAuction();
+		int auctionCategory = agent.getAuctionCategory(auction);
+		if (auctionCategory == TACAgent.CAT_HOTEL) {
+			int alloc = agent.getAllocation(auction);
+			if (alloc > 0 && quote.hasHQW(agent.getBid(auction)) && quote.getHQW() < alloc) {
+				Bid bid = new Bid(auction);
+				// Can not own anything in hotel auctions...
+				prices[auction] = quote.getAskPrice() + 50;
+				bid.addBidPoint(alloc, prices[auction]);
+				if (DEBUG) {
+					log.finest("submitting bid with alloc="
+							 + agent.getAllocation(auction)
+							 + " own=" + agent.getOwn(auction));
+				}
+				agent.submitBid(bid);
+			}
+		} else if (auctionCategory == TACAgent.CAT_ENTERTAINMENT) {
+			int alloc = agent.getAllocation(auction) - agent.getOwn(auction);
+			if (alloc != 0) {
+				Bid bid = new Bid(auction);
+				if (alloc < 0)
+					prices[auction] = 200f - (agent.getGameTime() * 120f) / 720000;
+				else
+					prices[auction] = 50f + (agent.getGameTime() * 100f) / 720000;
+				bid.addBidPoint(alloc, prices[auction]);
+				if (DEBUG) {
+					log.finest("submitting bid with alloc="
+							 + agent.getAllocation(auction)
+							 + " own=" + agent.getOwn(auction));
+				}
+				agent.submitBid(bid);
+			}
+		}
 	}
-	agent.submitBid(bid);
-      }
-    }
-  }
 
-  public void quoteUpdated(int auctionCategory) {
-    log.fine("All quotes for "
-	     + agent.auctionCategoryToString(auctionCategory)
-	     + " has been updated");
-  }
+	public void quoteUpdated(int auctionCategory) {
+		log.fine("All quotes for "
+			 + agent.auctionCategoryToString(auctionCategory)
+			 + " has been updated");
+	}
 
-  public void bidUpdated(Bid bid) {
-    log.fine("Bid Updated: id=" + bid.getID() + " auction="
-	     + bid.getAuction() + " state="
-	     + bid.getProcessingStateAsString());
-    log.fine("       Hash: " + bid.getBidHash());
-  }
+	public void bidUpdated(Bid bid) {
+		log.fine("Bid Updated: id=" + bid.getID() + " auction="
+			 + bid.getAuction() + " state="
+			 + bid.getProcessingStateAsString());
+		log.fine("       Hash: " + bid.getBidHash());
+	}
 
-  public void bidRejected(Bid bid) {
-    log.warning("Bid Rejected: " + bid.getID());
-    log.warning("      Reason: " + bid.getRejectReason()
+	public void bidRejected(Bid bid) {
+		log.warning("Bid Rejected: " + bid.getID());
+		log.warning("      Reason: " + bid.getRejectReason()
 		+ " (" + bid.getRejectReasonAsString() + ')');
-  }
+	}
 
-  public void bidError(Bid bid, int status) {
-    log.warning("Bid Error in auction " + bid.getAuction() + ": " + status
+	public void bidError(Bid bid, int status) {
+		log.warning("Bid Error in auction " + bid.getAuction() + ": " + status
 		+ " (" + agent.commandStatusToString(status) + ')');
-  }
-
-  public void gameStarted() {
-    log.fine("Game " + agent.getGameID() + " started!");
-
-    calculateAllocation();
-    sendBids();
-  }
-
-  public void gameStopped() {
-    log.fine("Game Stopped!");
-  }
-
-  public void auctionClosed(int auction) {
-    log.fine("*** Auction " + auction + " closed!");
-  }
-
-  private void sendBids() {
-    for (int i = 0, n = agent.getAuctionNo(); i < n; i++) {
-      int alloc = agent.getAllocation(i) - agent.getOwn(i);
-      float price = -1f;
-      switch (agent.getAuctionCategory(i)) {
-      case TACAgent.CAT_FLIGHT:
-	if (alloc > 0) {
-	  price = 1000;
 	}
-	break;
-      case TACAgent.CAT_HOTEL:
-	if (alloc > 0) {
-	  price = 200;
-	  prices[i] = 200f;
-	}
-	break;
-      case TACAgent.CAT_ENTERTAINMENT:
-	if (alloc < 0) {
-	  price = 200;
-	  prices[i] = 200f;
-	} else if (alloc > 0) {
-	  price = 50;
-	  prices[i] = 50f;
-	}
-	break;
-      default:
-	break;
-      }
-      if (price > 0) {
-	Bid bid = new Bid(i);
-	bid.addBidPoint(alloc, price);
-	if (DEBUG) {
-	  log.finest("submitting bid with alloc=" + agent.getAllocation(i)
-		     + " own=" + agent.getOwn(i));
-	}
-	agent.submitBid(bid);
-      }
-    }
-  }
 
-  private void calculateAllocation() {
-    for (int i = 0; i < 8; i++) {
-      int inFlight = agent.getClientPreference(i, TACAgent.ARRIVAL);
-      int outFlight = agent.getClientPreference(i, TACAgent.DEPARTURE);
-      int hotel = agent.getClientPreference(i, TACAgent.HOTEL_VALUE);
-      int type;
+	public void gameStarted() {
+		log.fine("Game " + agent.getGameID() + " started!");
 
-      // Get the flight preferences auction and remember that we are
-      // going to buy tickets for these days. (inflight=1, outflight=0)
-      int auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
+		calculateAllocation();
+		sendBids();
+	}
+
+	public void gameStopped() {
+		log.fine("Game Stopped!");
+	}
+
+	public void auctionClosed(int auction) {
+		log.fine("*** Auction " + auction + " closed!");
+	}
+
+	// -------------------------------------------------------------------
+	// Custom functions start here
+	// -------------------------------------------------------------------
+
+	// Nested class to represent ranges for flight value peturbations 
+	class Range {
+
+			private int low, high;
+
+			public Range(int l, int h){
+					this.low = l;
+					this.high = h;
+			}
+
+			public boolean contains(int number){
+					return (number >= low && number <= high);
+			}
+
+			//TODO based upon algorithm 1
+			public static Range getRange( int c, int t, int z) {
+				int x = c + (t/T)*(z-c);
+				if (x > 0) {
+					return Range(0-c, x);
+				} else if (x < 0) {
+					return Range(x, c);
+				}
+				return Range(0-c, c);
+			}
+
+			public double uniformP() {
+				return 1 / (high - low);
+			}
+
+			public float getMid() {
+				return (high - low) / 2;
+			}
+
+	}
+
+	private void flight_predictions(/*int c, int d, */int t, int y_t1, int Q_t) {
+		// for each flight (each initialised with possible values of z from -c to d [-10,30])
+		for (Map<Integer, Float> flight : Pz.values()) {
+			
+			float runningTotal = 0;
+
+			Iterator z = flight.entrySet().iterator();
+			Range r;
+
+			// for each remaining possible value of z
+			while (z.hasNext()) {
+				z.next();
+				r = Range.getRange(c, t, z.getKey());		// calculate the range of possible values for y
+				if ( r.contains(y_t1) ) {								// if y is within range for this z
+					z.setValue( r.uniformP() * z.getValue());
+					runningTotal += z.getValue();
+				} else {
+					z.remove(); //this value of z cannot explain observed prices, discard it.
+				}
+			}
+
+			// normalise the probablilities of each z value remaining plausible for this flight
+			for (Float z : flight.values()) {
+				z = z / runningTotal;
+			}
+
+		}
+
+		return;
+	}
+
+	//TODO: needs initial setting of p from current price of flight
+	private void expected_minimum_price(int t) {
+		// for each flight
+		for (Map.Entry<Integer, Map<Integer, Float>> flight : Pz.entrySet()) {
+
+			int runningTotal = 0;
+			//for each plausible value of z
+			for (Map.Entry<Integer, Float> z : flight.getValue().entrySet()) {
+				float min = Float.POSITIVE_INFINITY;
+				float p = something; //current price for this flight
+				//simulate forwards to the end of the game
+				for (int tau = t; tau <= T; tau++) {
+					//peturbing by naive expectations of delta
+					float delta = Range.getRange(c, tau, z.getKey()).getMid();
+					p = max(FLIGHT_MIN, min(FLIGHT_MAX, p + delta ));
+					//track the minimum price observed
+					if (p < min) {
+						min = p;
+					}
+				}
+				// multiply min by the probability that this is the one true z
+				runningTotal += min * z.getValue()
+			}
+			// average out the possible expected minimums
+			prices[flight.getKey()] = runningTotal / flight.entrySet().count();
+		}
+
+	}
+
+	private void sendBids() {
+		for (int i = 0, n = agent.getAuctionNo(); i < n; i++) {
+			int alloc = agent.getAllocation(i) - agent.getOwn(i);
+			float price = -1f;
+			switch (agent.getAuctionCategory(i)) {
+			case TACAgent.CAT_FLIGHT:
+				if (alloc > 0) {
+					price = 1000;
+				}
+				break;
+			case TACAgent.CAT_HOTEL:
+				if (alloc > 0) {
+					price = 200;
+					prices[i] = 200f;
+				}
+				break;
+			case TACAgent.CAT_ENTERTAINMENT:
+				if (alloc < 0) {
+					price = 200;
+					prices[i] = 200f;
+				} else if (alloc > 0) {
+					price = 50;
+					prices[i] = 50f;
+				}
+				break;
+			default:
+				break;
+			}
+			if (price > 0) {
+				Bid bid = new Bid(i);
+				bid.addBidPoint(alloc, price);
+				if (DEBUG) {
+					log.finest("submitting bid with alloc=" + agent.getAllocation(i)
+							 + " own=" + agent.getOwn(i));
+				}
+				agent.submitBid(bid);
+			}
+		}
+	}
+
+	private void calculateAllocation() {
+		for (int i = 0; i < 8; i++) {
+			int inFlight = agent.getClientPreference(i, TACAgent.ARRIVAL);
+			int outFlight = agent.getClientPreference(i, TACAgent.DEPARTURE);
+			int hotel = agent.getClientPreference(i, TACAgent.HOTEL_VALUE);
+			int type;
+
+			// Get the flight preferences auction and remember that we are
+			// going to buy tickets for these days. (inflight=1, outflight=0)
+			int auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
 					TACAgent.TYPE_INFLIGHT, inFlight);
-      agent.setAllocation(auction, agent.getAllocation(auction) + 1);
-      auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
-				    TACAgent.TYPE_OUTFLIGHT, outFlight);
-      agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
+						TACAgent.TYPE_OUTFLIGHT, outFlight);
+			agent.setAllocation(auction, agent.getAllocation(auction) + 1);
 
-      // if the hotel value is greater than 70 we will select the
-      // expensive hotel (type = 1)
-      if (hotel > 70) {
-	type = TACAgent.TYPE_GOOD_HOTEL;
-      } else {
-	type = TACAgent.TYPE_CHEAP_HOTEL;
-      }
-      // allocate a hotel night for each day that the agent stays
-      for (int d = inFlight; d < outFlight; d++) {
-	auction = agent.getAuctionFor(TACAgent.CAT_HOTEL, type, d);
-	log.finer("Adding hotel for day: " + d + " on " + auction);
-	agent.setAllocation(auction, agent.getAllocation(auction) + 1);
-      }
+			// if the hotel value is greater than 70 we will select the
+			// expensive hotel (type = 1)
+			if (hotel > 70) {
+				type = TACAgent.TYPE_GOOD_HOTEL;
+			} else {
+				type = TACAgent.TYPE_CHEAP_HOTEL;
+			}
+			// allocate a hotel night for each day that the agent stays
+			for (int d = inFlight; d < outFlight; d++) {
+				auction = agent.getAuctionFor(TACAgent.CAT_HOTEL, type, d);
+				log.finer("Adding hotel for day: " + d + " on " + auction);
+				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			}
 
-      int eType = -1;
-      while((eType = nextEntType(i, eType)) > 0) {
-	auction = bestEntDay(inFlight, outFlight, eType);
-	log.finer("Adding entertainment " + eType + " on " + auction);
-	agent.setAllocation(auction, agent.getAllocation(auction) + 1);
-      }
-    }
-  }
+			int eType = -1;
+			while((eType = nextEntType(i, eType)) > 0) {
+				auction = bestEntDay(inFlight, outFlight, eType);
+				log.finer("Adding entertainment " + eType + " on " + auction);
+				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			}
+		}
+	}
 
-  private int bestEntDay(int inFlight, int outFlight, int type) {
-    for (int i = inFlight; i < outFlight; i++) {
-      int auction = agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT,
-					type, i);
-      if (agent.getAllocation(auction) < agent.getOwn(auction)) {
-	return auction;
-      }
-    }
-    // If no left, just take the first...
-    return agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT,
-			       type, inFlight);
-  }
+	private int bestEntDay(int inFlight, int outFlight, int type) {
+		for (int i = inFlight; i < outFlight; i++) {
+			int auction = agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, i);
+			if (agent.getAllocation(auction) < agent.getOwn(auction)) {
+				return auction;
+			}
+		}
+		// If no left, just take the first...
+		return agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, inFlight);
+	}
 
-  private int nextEntType(int client, int lastType) {
-    int e1 = agent.getClientPreference(client, TACAgent.E1);
-    int e2 = agent.getClientPreference(client, TACAgent.E2);
-    int e3 = agent.getClientPreference(client, TACAgent.E3);
+	private int nextEntType(int client, int lastType) {
+		int e1 = agent.getClientPreference(client, TACAgent.E1);
+		int e2 = agent.getClientPreference(client, TACAgent.E2);
+		int e3 = agent.getClientPreference(client, TACAgent.E3);
 
-    // At least buy what each agent wants the most!!!
-    if ((e1 > e2) && (e1 > e3) && lastType == -1)
-      return TACAgent.TYPE_ALLIGATOR_WRESTLING;
-    if ((e2 > e1) && (e2 > e3) && lastType == -1)
-      return TACAgent.TYPE_AMUSEMENT;
-    if ((e3 > e1) && (e3 > e2) && lastType == -1)
-      return TACAgent.TYPE_MUSEUM;
-    return -1;
-  }
+		// At least buy what each agent wants the most!!!
+		if ((e1 > e2) && (e1 > e3) && lastType == -1)
+			return TACAgent.TYPE_ALLIGATOR_WRESTLING;
+		if ((e2 > e1) && (e2 > e3) && lastType == -1)
+			return TACAgent.TYPE_AMUSEMENT;
+		if ((e3 > e1) && (e3 > e2) && lastType == -1)
+			return TACAgent.TYPE_MUSEUM;
+		return -1;
+	}
 
 
 
-  // -------------------------------------------------------------------
-  // Only for backward compability
-  // -------------------------------------------------------------------
+	// -------------------------------------------------------------------
+	// Only for backward compability
+	// -------------------------------------------------------------------
 
-  public static void main (String[] args) {
-    TACAgent.main(args);
-  }
+	public static void main (String[] args) {
+		TACAgent.main(args);
+	}
 
 } // DummyAgent
