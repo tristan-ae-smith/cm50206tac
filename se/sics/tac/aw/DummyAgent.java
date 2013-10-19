@@ -127,6 +127,10 @@
 
 package se.sics.tac.aw;
 import se.sics.tac.util.ArgEnumerator;
+
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.Map;
 import java.util.logging.*;
 
 public class DummyAgent extends AgentImpl {
@@ -137,6 +141,8 @@ public class DummyAgent extends AgentImpl {
 	private static final boolean DEBUG = false;
 
 	private static final int FLIGHTS = 8;
+	private static final float FLIGHT_MIN = 150.0f;
+	private static final float FLIGHT_MAX = 800.0f;
 
 	//------------------ int z = ??;	// z per flight : bound on final peturbation. Unknown
 	private static final int c = 10;	// -c : lower bound of possible z values
@@ -248,11 +254,11 @@ public class DummyAgent extends AgentImpl {
 			public static Range getRange( int c, int t, int z) {
 				int x = c + (t/T)*(z-c);
 				if (x > 0) {
-					return Range(0-c, x);
+					return new Range(0-c, x);
 				} else if (x < 0) {
-					return Range(x, c);
+					return new Range(x, c);
 				}
-				return Range(0-c, c);
+				return new Range(0-c, c);
 			}
 
 			public double uniformP() {
@@ -317,10 +323,10 @@ public class DummyAgent extends AgentImpl {
 					}
 				}
 				// multiply min by the probability that this is the one true z
-				runningTotal += min * z.getValue()
+				runningTotal += min * z.getValue();
 			}
 			// average out the possible expected minimums
-			prices[flight.getKey()] = runningTotal / flight.entrySet().count();
+			prices[flight.getKey()] = runningTotal / flight.getValue().size();
 		}
 
 	}
