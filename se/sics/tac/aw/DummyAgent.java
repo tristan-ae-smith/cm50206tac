@@ -109,7 +109,7 @@
  *  - new information about the quotes on all auctions for the auction
  *    category has arrived (quotes for a specific type of auctions are
  *    often requested at once).
-
+ *
  * auctionClosed(int auction)
  *  - the auction with id "auction" has closed
  *
