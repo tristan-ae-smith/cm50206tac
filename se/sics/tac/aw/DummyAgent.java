@@ -129,6 +129,7 @@ package se.sics.tac.aw;
 import se.sics.tac.util.ArgEnumerator;
 
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.Map;
 import java.util.logging.*;
@@ -251,17 +252,22 @@ public class DummyAgent extends AgentImpl {
 			}
 
 			//TODO based upon algorithm 1
-			public static Range getRange( int c, int t, int z) {
+			public Range( int c, int t, int z) {
 				int x = c + (t/T)*(z-c);
 				if (x > 0) {
-					return new Range(0-c, x);
+					this.low = 0-c;
+					this.high = x;
+					return;
 				} else if (x < 0) {
-					return new Range(x, c);
+					this.low = x;
+					this.high = c;
+					return;
 				}
-				return new Range(0-c, c);
+				this.low = 0-c;
+				this.high = c;
 			}
 
-			public double uniformP() {
+			public float uniformP() {
 				return 1 / (high - low);
 			}
 
@@ -277,24 +283,24 @@ public class DummyAgent extends AgentImpl {
 			
 			float runningTotal = 0;
 
-			Iterator z = flight.entrySet().iterator();
+			Iterator<Entry<Integer, Float>> z = flight.entrySet().iterator();
 			Range r;
 
 			// for each remaining possible value of z
 			while (z.hasNext()) {
 				z.next();
-				r = Range.getRange(c, t, z.getKey());		// calculate the range of possible values for y
+				r = new Range(c, t, ((Entry<Integer,Float>) z).getKey());		// calculate the range of possible values for y
 				if ( r.contains(y_t1) ) {								// if y is within range for this z
-					z.setValue( r.uniformP() * z.getValue());
-					runningTotal += z.getValue();
+					((Entry<Integer, Float>) z).setValue( r.uniformP() * ((Entry<Integer,Float>) z).getValue());
+					runningTotal += ((Entry<Integer,Float>) z).getValue();
 				} else {
 					z.remove(); //this value of z cannot explain observed prices, discard it.
 				}
 			}
 
 			// normalise the probablilities of each z value remaining plausible for this flight
-			for (Float z : flight.values()) {
-				z = z / runningTotal;
+			for (Float p : flight.values()) {
+				p = p / runningTotal;
 			}
 
 		}
@@ -311,12 +317,12 @@ public class DummyAgent extends AgentImpl {
 			//for each plausible value of z
 			for (Map.Entry<Integer, Float> z : flight.getValue().entrySet()) {
 				float min = Float.POSITIVE_INFINITY;
-				float p = something; //current price for this flight
+				float p = 0; //current price for this flight
 				//simulate forwards to the end of the game
 				for (int tau = t; tau <= T; tau++) {
 					//peturbing by naive expectations of delta
-					float delta = Range.getRange(c, tau, z.getKey()).getMid();
-					p = max(FLIGHT_MIN, min(FLIGHT_MAX, p + delta ));
+					float delta = new Range(c, tau, z.getKey()).getMid();
+					p = Math.max(FLIGHT_MIN, Math.min(FLIGHT_MAX, p + delta ));
 					//track the minimum price observed
 					if (p < min) {
 						min = p;
