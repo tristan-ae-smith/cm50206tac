@@ -223,7 +223,7 @@ public class DummyAgent extends AgentImpl {
 			expected_minimum_price((int) (seconds/1000));
 			for (int i = 0; i < FLIGHTS; i++) {
 				log.fine("Flight " + i + ": current price is " + currPrices[i] + ", expected minimum is " + bidPrices[i]);
-				// if the game is ending soon, or current price is within 5% of the expected minimum and we need the flight
+				// if (the game is ending soon, or current price is within 5% of the expected minimum) and we need the flight and we've had time to study trends
 				if ((seconds > 500*1000 || currPrices[i] < 1.05 * bidPrices[i]) && agent.getAllocation(i) - agent.getOwn(i) > 0 && seconds > (20 + 10*i) * 1000) {
 					log.fine("Bidding.");
 					Bid bid = new Bid(i);
@@ -416,7 +416,7 @@ public class DummyAgent extends AgentImpl {
 			float price = -1f;
 			switch (agent.getAuctionCategory(i)) {
 			case TACAgent.CAT_FLIGHT:
-				// don't bid on flights at the start of the game
+				// don't bid on flights at the start of the game - we wait for the opportune moment
 				break;
 			case TACAgent.CAT_HOTEL:
 				if (alloc > 0) {
@@ -448,6 +448,7 @@ public class DummyAgent extends AgentImpl {
 		}
 	}
 
+	//store the client preferences as allocated desires in particular auctions.
 	private void calculateAllocation() {
 		clientEntPrefs = new ArrayList<int[]>();
 		
@@ -478,7 +479,9 @@ public class DummyAgent extends AgentImpl {
 				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
 			}
 
+			//calculate the client's ordered preferences
 			clientEntPrefs.add(getClientEntPrefs(i));
+			//allocate them their first choice - from what we own if possible
 			bestEntDay(inFlight, outFlight, i, 0);
 			
 		}
@@ -492,6 +495,7 @@ public class DummyAgent extends AgentImpl {
 	}
 
 	private void bestEntDay(int inFlight, int outFlight, int client, int pref) {
+		//retrieve the type of entertainment we're looking for
 		int type = clientEntPrefs.get(client)[pref];
 		for (int i = inFlight; i < outFlight; i++) {
 			//skip this date if the client already has allocated entertainment
@@ -499,7 +503,6 @@ public class DummyAgent extends AgentImpl {
 				continue;
 			}
 			int auction = agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, i);
-//			log.fine("getting allocation for a" + auction + " on day " + i + " with type " + type);
 			if (agent.getAllocation(auction) < agent.getOwn(auction)) {
 				log.finer("Adding entertainment " + type + " on " + auction);
 				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
@@ -518,6 +521,7 @@ public class DummyAgent extends AgentImpl {
 		}
 	}
 
+	// return a short ordered list for the order of client entertainment type preferences
 	private int[] getClientEntPrefs(int client) {
 		int e1 = agent.getClientPreference(client, TACAgent.E1);
 		int e2 = agent.getClientPreference(client, TACAgent.E2);
@@ -526,8 +530,8 @@ public class DummyAgent extends AgentImpl {
 		int orderedPrefs[] = {0,0,0};
 		
 		orderedPrefs[0] = (e1 > e2 && e1 > e3)? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 > e3)? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
-		orderedPrefs[2] = (e1 < e2 && e1 < e3)? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 < e3)? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
 		orderedPrefs[1] = (e1 < Math.max(e1, Math.max(e2, e3)) && e1 > Math.min(e1, Math.min(e2, e3)))? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 < Math.max(e1, Math.max(e2, e3)) && e2 > Math.min(e1, Math.min(e2, e3)))? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
+		orderedPrefs[2] = (e1 < e2 && e1 < e3)? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 < e3)? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
 		log.fine("client " + client + ": " + orderedPrefs[0] + " " + orderedPrefs[1] + " " + orderedPrefs[2]);
 		return orderedPrefs;
 	}
