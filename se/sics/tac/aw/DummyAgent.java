@@ -158,6 +158,7 @@ public class DummyAgent extends AgentImpl {
 	private float[] flightDeltas;
 	
 	private List<Map<Integer, Float>> Pz;
+	private ArrayList<int[]> clientEntPrefs;
 
 	//INVESTIGATE: this code doesn't get called between games.
 	//				(re-)initialisation of values moved to gameStarted()
@@ -448,6 +449,8 @@ public class DummyAgent extends AgentImpl {
 	}
 
 	private void calculateAllocation() {
+		clientEntPrefs = new ArrayList<int[]>();
+		
 		for (int i = 0; i < 8; i++) {
 			int inFlight = agent.getClientPreference(i, TACAgent.ARRIVAL);
 			int outFlight = agent.getClientPreference(i, TACAgent.DEPARTURE);
@@ -475,39 +478,58 @@ public class DummyAgent extends AgentImpl {
 				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
 			}
 
-			int eType = -1;
-			while((eType = nextEntType(i, eType)) > 0) {
-				auction = bestEntDay(inFlight, outFlight, eType);
-				log.finer("Adding entertainment " + eType + " on " + auction);
-				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			clientEntPrefs.add(getClientEntPrefs(i));
+			bestEntDay(inFlight, outFlight, i, 0);
+			
+		}
+		
+		//loop through all of the clients, allocating them their second and third preferences if possible
+		for (int pref = 1; pref <= 2; pref++) {
+			for (int client = 0; client < 8; client++) {
+				bestEntDay(agent.getClientPreference(client, TACAgent.ARRIVAL), agent.getClientPreference(client, TACAgent.DEPARTURE), client, pref);
 			}
 		}
 	}
 
-	private int bestEntDay(int inFlight, int outFlight, int type) {
+	private void bestEntDay(int inFlight, int outFlight, int client, int pref) {
+		int type = clientEntPrefs.get(client)[pref];
 		for (int i = inFlight; i < outFlight; i++) {
+			//skip this date if the client already has allocated entertainment
+			if (0-i == clientEntPrefs.get(client)[0] || 0-i == clientEntPrefs.get(client)[1]) {
+				continue;
+			}
 			int auction = agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, i);
+//			log.fine("getting allocation for a" + auction + " on day " + i + " with type " + type);
 			if (agent.getAllocation(auction) < agent.getOwn(auction)) {
-				return auction;
+				log.finer("Adding entertainment " + type + " on " + auction);
+				agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+				//double up on the prefs to store which days are already allocated
+				clientEntPrefs.get(client)[pref] = -i;
+				return;
 			}
 		}
-		// If no left, just take the first...
-		return agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, inFlight);
+		
+		// If none left and needy, just take the first...
+		if (pref == 0) {
+			int auction = agent.getAuctionFor(TACAgent.CAT_ENTERTAINMENT, type, inFlight);
+			agent.setAllocation(auction, agent.getAllocation(auction) + 1);
+			clientEntPrefs.get(client)[0] = -inFlight;
+			return;
+		}
 	}
 
-	private int nextEntType(int client, int lastType) {
+	private int[] getClientEntPrefs(int client) {
 		int e1 = agent.getClientPreference(client, TACAgent.E1);
 		int e2 = agent.getClientPreference(client, TACAgent.E2);
 		int e3 = agent.getClientPreference(client, TACAgent.E3);
-
-		// At least buy what each agent wants the most!!!
-		if ((e1 > e2) && (e1 > e3) && lastType == -1)
-			return TACAgent.TYPE_ALLIGATOR_WRESTLING;
-		if ((e2 > e1) && (e2 > e3) && lastType == -1)
-			return TACAgent.TYPE_AMUSEMENT;
-		if ((e3 > e1) && (e3 > e2) && lastType == -1)
-			return TACAgent.TYPE_MUSEUM;
-		return -1;
+		
+		int orderedPrefs[] = {0,0,0};
+		
+		orderedPrefs[0] = (e1 > e2 && e1 > e3)? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 > e3)? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
+		orderedPrefs[2] = (e1 < e2 && e1 < e3)? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 < e3)? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
+		orderedPrefs[1] = (e1 < Math.max(e1, Math.max(e2, e3)) && e1 > Math.min(e1, Math.min(e2, e3)))? TACAgent.TYPE_ALLIGATOR_WRESTLING : (e2 < Math.max(e1, Math.max(e2, e3)) && e2 > Math.min(e1, Math.min(e2, e3)))? TACAgent.TYPE_AMUSEMENT : TACAgent.TYPE_MUSEUM;
+		log.fine("client " + client + ": " + orderedPrefs[0] + " " + orderedPrefs[1] + " " + orderedPrefs[2]);
+		return orderedPrefs;
 	}
 
 
