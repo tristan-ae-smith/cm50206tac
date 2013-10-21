@@ -229,11 +229,23 @@ public class DummyAgent extends AgentImpl {
 			log.fine("Predicting future flight minima after " + seconds/1000 + " seconds");
 			flight_predictions((int) (seconds/1000));
 			expected_minimum_price((int) (seconds/1000));
-			int i = 0;
-			for (float x: bidPrices) {
-				if (++i > 8) break;
-	            log.fine(x + ",");
+			for (int i = 0; i < FLIGHTS; i++) {
+				// if the game is ending soon, or current price is within 10% of the expected minimum and we need the flight
+				if (seconds > 500*1000 || currPrices[i] < 1.1 * bidPrices[i] && agent.getAllocation(i) - agent.getOwn(i) > 0) {
+					Bid bid = new Bid(i);
+					bid.addBidPoint(agent.getAllocation(i) - agent.getOwn(i), currPrices[i]);
+					if (DEBUG) {
+						log.fine("submitting bid with alloc=" + agent.getAllocation(i)
+								 + " own=" + agent.getOwn(i));
+					}
+					agent.submitBid(bid);
+				}
 			}
+//			int i = 0;
+//			for (float x: bidPrices) {
+//				if (++i > 8) break;
+//	            log.fine(x + ",");
+//			}
 		}
 	}
 
@@ -341,27 +353,20 @@ public class DummyAgent extends AgentImpl {
 				Entry<Integer, Float> p = (Entry<Integer, Float>)z.next();
 				r = new Range(c, t, p.getKey());		// calculate the range of possible values for y
 				if ( r.contains(flightDeltas[flightNo]) ) {								// if y is within range for this z
-//					log.fine("" + flightNo + "oldP: " + p.getValue());
 					p.setValue( r.uniformP() * p.getValue());
-//					log.fine("" + flightNo + "newP: " + p.getValue());
 					runningTotal += p.getValue();
-//					log.fine("" + flightNo + ": " + runningTotal);
 				} else {
 					log.fine("" + currPrices[flightNo] + " is outside probable range: " + flightDeltas[flightNo] + " exceeds " + r.toString());
 					z.remove(); //this value of z cannot explain observed prices, discard it.
 				}
 			}
 			
-			float newTotal = 0.0f;
 			// normalise the probablilities of each z value remaining plausible for this flight
 			for (Entry<Integer, Float> p : flight.entrySet()) {
 				flight.put(p.getKey(), p.getValue()/runningTotal);
-				newTotal += p.getValue();
 			}
-			log.fine("After normalisation: " + newTotal);
 			
 			flightNo++;
-
 		}
 
 		return;
@@ -408,11 +413,11 @@ public class DummyAgent extends AgentImpl {
 			int alloc = agent.getAllocation(i) - agent.getOwn(i);
 			float price = -1f;
 			switch (agent.getAuctionCategory(i)) {
-			case TACAgent.CAT_FLIGHT:
-				if (alloc > 0) {
-					price = 1000;
-				}
-				break;
+//			case TACAgent.CAT_FLIGHT:
+//				if (alloc > 0) {
+////					price = 1000;
+//				}
+//				break;
 			case TACAgent.CAT_HOTEL:
 				if (alloc > 0) {
 					price = 200;
@@ -452,11 +457,9 @@ public class DummyAgent extends AgentImpl {
 
 			// Get the flight preferences auction and remember that we are
 			// going to buy tickets for these days. (inflight=1, outflight=0)
-			int auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
-					TACAgent.TYPE_INFLIGHT, inFlight);
+			int auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT, TACAgent.TYPE_INFLIGHT, inFlight);
 			agent.setAllocation(auction, agent.getAllocation(auction) + 1);
-			auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT,
-						TACAgent.TYPE_OUTFLIGHT, outFlight);
+			auction = agent.getAuctionFor(TACAgent.CAT_FLIGHT, TACAgent.TYPE_OUTFLIGHT, outFlight);
 			agent.setAllocation(auction, agent.getAllocation(auction) + 1);
 
 			// if the hotel value is greater than 70 we will select the
