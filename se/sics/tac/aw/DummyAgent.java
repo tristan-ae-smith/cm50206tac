@@ -223,7 +223,7 @@ public class DummyAgent extends AgentImpl {
 			for (int i = 0; i < FLIGHTS; i++) {
 				log.fine("Flight " + i + ": current price is " + currPrices[i] + ", expected minimum is " + bidPrices[i]);
 				// if the game is ending soon, or current price is within 5% of the expected minimum and we need the flight
-				if (seconds > 500*1000 || currPrices[i] < 1.05 * bidPrices[i] && agent.getAllocation(i) - agent.getOwn(i) > 0 && seconds > (20 + 10*i) * 1000) {
+				if ((seconds > 500*1000 || currPrices[i] < 1.05 * bidPrices[i]) && agent.getAllocation(i) - agent.getOwn(i) > 0 && seconds > (20 + 10*i) * 1000) {
 					log.fine("Bidding.");
 					Bid bid = new Bid(i);
 					bid.addBidPoint(agent.getAllocation(i) - agent.getOwn(i), currPrices[i]);
@@ -234,11 +234,6 @@ public class DummyAgent extends AgentImpl {
 					agent.submitBid(bid);
 				}
 			}
-//			int i = 0;
-//			for (float x: bidPrices) {
-//				if (++i > 8) break;
-//	            log.fine(x + ",");
-//			}
 		}
 	}
 
@@ -263,7 +258,9 @@ public class DummyAgent extends AgentImpl {
 	public void gameStarted() {
 		log.fine("Game " + agent.getGameID() + " started!");
 		
-		//reinitialise deltas and z-probabilities
+		//reinitialise prices, deltas and z-probabilities
+		bidPrices = new float[agent.getAuctionNo()];
+		currPrices = new float[agent.getAuctionNo()];
 		flightDeltas = new float[FLIGHTS];
 		
 		Pz = new ArrayList<Map<Integer, Float>>();
@@ -286,12 +283,10 @@ public class DummyAgent extends AgentImpl {
 
 	public void gameStopped() {
 		log.fine("Game Stopped!");
-		for (float x: bidPrices) {
-            log.fine(x + ",");
+		for (int i = 0; i < FLIGHTS; i++) {
+			log.fine("bidPrices[" + i + "]: " + bidPrices[i] + "\t currPrices[" + i + "]: " + currPrices[i]);
 		}
-		for (float x: currPrices) {
-            log.fine(x + ",");
-		}
+		
 	}
 
 	public void auctionClosed(int auction) {
