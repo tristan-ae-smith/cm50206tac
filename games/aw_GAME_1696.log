@@ -1,0 +1,532 @@
+20/10 00:40:01 FINE aw.TACAgent|Log for game 1696 started
+************************************************************
+* Log for game 1696 started
+************************************************************
+
+
+20/10 00:40:01 FINE aw.TACAgent|Starting up game: 1696
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getGameAuctionIDs><gameID>1696</gameID></getGameAuctionIDs>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getGameAuctionIDs><startTime>1382229600</startTime><auctionIDs><list><TACAuctionTuple><category>flight</category><type>1</type><day>1</day><ID>47293</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>1</type><day>2</day><ID>47294</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>1</type><day>3</day><ID>47295</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>1</type><day>4</day><ID>47296</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>0</type><day>2</day><ID>47297</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>0</type><day>3</day><ID>47298</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>0</type><day>4</day><ID>47299</ID></TACAuctionTuple><TACAuctionTuple><category>flight</category><type>0</type><day>5</day><ID>47300</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>1</type><day>1</day><ID>47301</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>1</type><day>2</day><ID>47302</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>1</type><day>3</day><ID>47303</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>1</type><day>4</day><ID>47304</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>0</type><day>1</day><ID>47305</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>0</type><day>2</day><ID>47306</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>0</type><day>3</day><ID>47307</ID></TACAuctionTuple><TACAuctionTuple><category>hotel</category><type>0</type><day>4</day><ID>47308</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>1</type><day>1</day><ID>47309</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>1</type><day>2</day><ID>47310</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>1</type><day>3</day><ID>47311</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>1</type><day>4</day><ID>47312</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>2</type><day>1</day><ID>47313</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>2</type><day>2</day><ID>47314</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>2</type><day>3</day><ID>47315</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>2</type><day>4</day><ID>47316</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>3</type><day>1</day><ID>47317</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>3</type><day>2</day><ID>47318</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>3</type><day>3</day><ID>47319</ID></TACAuctionTuple><TACAuctionTuple><category>entertainment</category><type>3</type><day>4</day><ID>47320</ID></TACAuctionTuple></list></auctionIDs><commandStatus>0</commandStatus></getGameAuctionIDs>' responseTime: 30 avg: 34.0 count: 4
+20/10 00:40:01 FINEST aw.TACAgent|Auction 0 (Inflight 1): 47293
+20/10 00:40:01 FINEST aw.TACAgent|Auction 1 (Inflight 2): 47294
+20/10 00:40:01 FINEST aw.TACAgent|Auction 2 (Inflight 3): 47295
+20/10 00:40:01 FINEST aw.TACAgent|Auction 3 (Inflight 4): 47296
+20/10 00:40:01 FINEST aw.TACAgent|Auction 4 (Outflight 2): 47297
+20/10 00:40:01 FINEST aw.TACAgent|Auction 5 (Outflight 3): 47298
+20/10 00:40:01 FINEST aw.TACAgent|Auction 6 (Outflight 4): 47299
+20/10 00:40:01 FINEST aw.TACAgent|Auction 7 (Outflight 5): 47300
+20/10 00:40:01 FINEST aw.TACAgent|Auction 12 (Good Hotel 1): 47301
+20/10 00:40:01 FINEST aw.TACAgent|Auction 13 (Good Hotel 2): 47302
+20/10 00:40:01 FINEST aw.TACAgent|Auction 14 (Good Hotel 3): 47303
+20/10 00:40:01 FINEST aw.TACAgent|Auction 15 (Good Hotel 4): 47304
+20/10 00:40:01 FINEST aw.TACAgent|Auction 8 (Cheap Hotel 1): 47305
+20/10 00:40:01 FINEST aw.TACAgent|Auction 9 (Cheap Hotel 2): 47306
+20/10 00:40:01 FINEST aw.TACAgent|Auction 10 (Cheap Hotel 3): 47307
+20/10 00:40:01 FINEST aw.TACAgent|Auction 11 (Cheap Hotel 4): 47308
+20/10 00:40:01 FINEST aw.TACAgent|Auction 16 (Alligator 1): 47309
+20/10 00:40:01 FINEST aw.TACAgent|Auction 17 (Alligator 2): 47310
+20/10 00:40:01 FINEST aw.TACAgent|Auction 18 (Alligator 3): 47311
+20/10 00:40:01 FINEST aw.TACAgent|Auction 19 (Alligator 4): 47312
+20/10 00:40:01 FINEST aw.TACAgent|Auction 20 (Amusement 1): 47313
+20/10 00:40:01 FINEST aw.TACAgent|Auction 21 (Amusement 2): 47314
+20/10 00:40:01 FINEST aw.TACAgent|Auction 22 (Amusement 3): 47315
+20/10 00:40:01 FINEST aw.TACAgent|Auction 23 (Amusement 4): 47316
+20/10 00:40:01 FINEST aw.TACAgent|Auction 24 (Museum 1): 47317
+20/10 00:40:01 FINEST aw.TACAgent|Auction 25 (Museum 2): 47318
+20/10 00:40:01 FINEST aw.TACAgent|Auction 26 (Museum 3): 47319
+20/10 00:40:01 FINEST aw.TACAgent|Auction 27 (Museum 4): 47320
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getGameConsts><gameID>1696</gameID></getGameConsts>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getGameConsts><gameType>tacClassic</gameType><numClients>8</numClients><numAgents>8</numAgents><gameLength>540</gameLength><commandStatus>0</commandStatus></getGameConsts>' responseTime: 16 avg: 30.0 count: 5
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getGameParams><gameID>1696</gameID></getGameParams>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getGameParams><clientPreferences><list><clientPrefTuple><client>1</client><arrival>3</arrival><departure>5</departure><hotel>131.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>36.00</price></typePriceTuple><typePriceTuple><type>2</type><price>7.00</price></typePriceTuple><typePriceTuple><type>3</type><price>142.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>2</client><arrival>1</arrival><departure>4</departure><hotel>103.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>180.00</price></typePriceTuple><typePriceTuple><type>2</type><price>103.00</price></typePriceTuple><typePriceTuple><type>3</type><price>189.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>3</client><arrival>1</arrival><departure>2</departure><hotel>114.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>135.00</price></typePriceTuple><typePriceTuple><type>2</type><price>126.00</price></typePriceTuple><typePriceTuple><type>3</type><price>69.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>4</client><arrival>1</arrival><departure>3</departure><hotel>85.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>2.00</price></typePriceTuple><typePriceTuple><type>2</type><price>180.00</price></typePriceTuple><typePriceTuple><type>3</type><price>56.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>5</client><arrival>3</arrival><departure>4</departure><hotel>98.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>85.00</price></typePriceTuple><typePriceTuple><type>2</type><price>148.00</price></typePriceTuple><typePriceTuple><type>3</type><price>152.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>6</client><arrival>3</arrival><departure>4</departure><hotel>149.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>112.00</price></typePriceTuple><typePriceTuple><type>2</type><price>192.00</price></typePriceTuple><typePriceTuple><type>3</type><price>95.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>7</client><arrival>1</arrival><departure>4</departure><hotel>96.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>57.00</price></typePriceTuple><typePriceTuple><type>2</type><price>4.00</price></typePriceTuple><typePriceTuple><type>3</type><price>13.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple><clientPrefTuple><client>8</client><arrival>1</arrival><departure>4</departure><hotel>134.00</hotel><ticketPreferences><list><typePriceTuple><type>1</type><price>66.00</price></typePriceTuple><typePriceTuple><type>2</type><price>24.00</price></typePriceTuple><typePriceTuple><type>3</type><price>151.00</price></typePriceTuple></list></ticketPreferences></clientPrefTuple></list></clientPreferences><ticketEndowments><list><ticketEndowmentTuple><type>1</type><day>1</day><quantity>4</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>1</type><day>2</day><quantity>4</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>1</type><day>3</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>1</type><day>4</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>2</type><day>1</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>2</type><day>2</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>2</type><day>3</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>2</type><day>4</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>3</type><day>1</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>3</type><day>2</day><quantity>2</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>3</type><day>3</day><quantity>0</quantity></ticketEndowmentTuple><ticketEndowmentTuple><type>3</type><day>4</day><quantity>2</quantity></ticketEndowmentTuple></list></ticketEndowments><commandStatus>0</commandStatus></getGameParams>' responseTime: 34 avg: 31.0 count: 6
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transIDs><earliestTransID>-1</earliestTransID></transIDs>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transIDs><ids><list></list></ids><more>0</more><commandStatus>0</commandStatus></transIDs>' responseTime: 15 avg: 28.0 count: 7
+20/10 00:40:01 FINE aw.DummyAgent|Game 1696 started!
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 4 on 15
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 3 on 27
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 1 on 12
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 2 on 13
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 3 on 25
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 1 on 12
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 1 on 16
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 1 on 12
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 2 on 13
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 2 on 20
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 3 on 26
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 2 on 22
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 1 on 12
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 2 on 13
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 1 on 16
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 1 on 12
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 2 on 13
+20/10 00:40:01 FINER aw.DummyAgent|Adding hotel for day: 3 on 14
+20/10 00:40:01 FINER aw.DummyAgent|Adding entertainment 3 on 25
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 0 (Inflight 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47293</auctionID><bidString>((5 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277299</bidID><bidHash>((5 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 21 avg: 27.0 count: 8
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 2 (Inflight 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47295</auctionID><bidString>((3 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277301</bidID><bidHash>((3 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 31 avg: 28.0 count: 9
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 4 (Outflight 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47297</auctionID><bidString>((1 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277302</bidID><bidHash>((1 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 32 avg: 28.0 count: 10
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 5 (Outflight 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47298</auctionID><bidString>((1 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277304</bidID><bidHash>((1 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 32 avg: 28.0 count: 11
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 6 (Outflight 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47299</auctionID><bidString>((5 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277305</bidID><bidHash>((5 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 33 avg: 29.0 count: 12
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 7 (Outflight 5)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47300</auctionID><bidString>((1 1000.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277306</bidID><bidHash>((1 1000.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 33 avg: 29.0 count: 13
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 12 (Good Hotel 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47301</auctionID><bidString>((5 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277307</bidID><bidHash>((5 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 33 avg: 29.0 count: 14
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 13 (Good Hotel 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47302</auctionID><bidString>((4 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277308</bidID><bidHash>((4 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 34 avg: 30.0 count: 15
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 14 (Good Hotel 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47303</auctionID><bidString>((6 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277309</bidID><bidHash>((6 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 34 avg: 30.0 count: 16
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 15 (Good Hotel 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47304</auctionID><bidString>((1 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277310</bidID><bidHash>((1 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 38 avg: 30.0 count: 17
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 16 (Alligator 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47309</auctionID><bidString>((-2 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277311</bidID><bidHash>((-2 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 42 avg: 31.0 count: 18
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 17 (Alligator 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47310</auctionID><bidString>((-4 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277312</bidID><bidHash>((-4 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 42 avg: 31.0 count: 19
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 20 (Amusement 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47313</auctionID><bidString>((1 50.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277313</bidID><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 42 avg: 32.0 count: 20
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 22 (Amusement 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47315</auctionID><bidString>((1 50.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277315</bidID><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 43 avg: 32.0 count: 21
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 26 (Museum 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47319</auctionID><bidString>((1 50.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277317</bidID><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 43 avg: 33.0 count: 22
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 27 (Museum 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47320</auctionID><bidString>((-1 200.0))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277318</bidID><bidHash>((-1 200.0000))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 43 avg: 33.0 count: 23
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 0 (Inflight 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47293</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>289.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>289.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 44 avg: 34.0 count: 24
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 0 with price 289.0( delta: -314.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 1 (Inflight 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47294</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>375.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>375.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 45 avg: 34.0 count: 25
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 1 with price 375.0( delta: 26.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 2 (Inflight 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47295</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>364.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>364.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 45 avg: 35.0 count: 26
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 2 with price 364.0( delta: -242.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 3 (Inflight 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47296</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>283.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>283.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 46 avg: 35.0 count: 27
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 3 with price 283.0( delta: 118.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 4 (Outflight 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47297</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>377.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>377.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 46 avg: 35.0 count: 28
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 4 with price 377.0( delta: 39.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 5 (Outflight 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47298</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>307.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>307.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 47 avg: 36.0 count: 29
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 5 with price 307.0( delta: -55.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 6 (Outflight 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47299</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>341.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>341.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 46 avg: 36.0 count: 30
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 6 with price 341.0( delta: 100.0)
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 7 (Outflight 5)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47300</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>365.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229610</nextQuoteTime><lastClearPrice>365.0000</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 46 avg: 36.0 count: 31
+20/10 00:40:01 FINE aw.DummyAgent|got quote for auction 7 with price 365.0( delta: 97.0)
+20/10 00:40:01 FINE aw.DummyAgent|All quotes for flight have been updated
+20/10 00:40:01 FINE aw.DummyAgent|Predicting future flight minima after 0 seconds
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 0; 8 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|289.0 is outside probable range: -314.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 1; 21 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|375.0 is outside probable range: 26.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 2; 4 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|364.0 is outside probable range: -242.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|364.0 is outside probable range: -242.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|364.0 is outside probable range: -242.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|364.0 is outside probable range: -242.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 3; 29 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|283.0 is outside probable range: 118.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 4; 22 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|377.0 is outside probable range: 39.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 5; 21 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|307.0 is outside probable range: -55.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 6; 24 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|341.0 is outside probable range: 100.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating for flight 7; 23 values for z remain.
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|365.0 is outside probable range: 97.0 exceeds (-10.0) - (10.0)
+20/10 00:40:01 FINE aw.DummyAgent|After normalisation: 0.0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 0; starting at 289.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 0
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 1; starting at 375.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 1
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 2; starting at 364.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 2
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 3; starting at 283.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 3
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 4; starting at 377.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 4
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 5; starting at 307.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 5
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 6; starting at 341.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 6
+20/10 00:40:01 FINE aw.DummyAgent|Calculating minima for 7; starting at 365.0
+20/10 00:40:01 FINE aw.DummyAgent|0.0 predicted, 0.0 stored for 7
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINE aw.DummyAgent|0.0,
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 16 (Alligator 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47309</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>200.0000</lastAskPrice><lastBidPrice>50.0029</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 114 avg: 39.0 count: 32
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 17 (Alligator 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47310</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>200.0000</lastAskPrice><lastBidPrice>50.0029</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 115 avg: 41.0 count: 33
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 18 (Alligator 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47311</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>165.9990</lastAskPrice><lastBidPrice>50.0027</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 115 avg: 43.0 count: 34
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 19 (Alligator 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47312</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>173.1023</lastAskPrice><lastBidPrice>50.0025</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 120 avg: 45.0 count: 35
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 20 (Amusement 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47313</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>149.6734</lastAskPrice><lastBidPrice>50.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 120 avg: 47.0 count: 36
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 21 (Amusement 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47314</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>163.6761</lastAskPrice><lastBidPrice>50.0032</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 120 avg: 49.0 count: 37
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 22 (Amusement 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47315</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>190.6024</lastAskPrice><lastBidPrice>50.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>190.6024</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 121 avg: 51.0 count: 38
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 23 (Amusement 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47316</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>157.9928</lastAskPrice><lastBidPrice>50.0019</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 121 avg: 53.0 count: 39
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 24 (Museum 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47317</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 121 avg: 55.0 count: 40
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 25 (Museum 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47318</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>187.2884</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>187.2884</lastClearPrice><lastClearTime>1382229600</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 122 avg: 56.0 count: 41
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 26 (Museum 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47319</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>110.5709</lastAskPrice><lastBidPrice>50.0018</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 122 avg: 58.0 count: 42
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 27 (Museum 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47320</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>182.1434</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>1382229600</lastQuoteTime><nextQuoteTime>1382229630</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>1382230140</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 122 avg: 59.0 count: 43
+20/10 00:40:01 FINE aw.DummyAgent|All quotes for entertainment have been updated
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 8 (Cheap Hotel 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47305</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 123 avg: 61.0 count: 44
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 9 (Cheap Hotel 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47306</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 123 avg: 62.0 count: 45
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 10 (Cheap Hotel 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47307</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 123 avg: 64.0 count: 46
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 11 (Cheap Hotel 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47308</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 124 avg: 65.0 count: 47
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 12 (Good Hotel 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47301</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 124 avg: 66.0 count: 48
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 13 (Good Hotel 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47302</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 124 avg: 67.0 count: 49
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 14 (Good Hotel 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47303</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 124 avg: 68.0 count: 50
+20/10 00:40:01 FINEST aw.TACMessage|requesting quotes for auction 15 (Good Hotel 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<getQuote><auctionID>47304</auctionID></getQuote>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><getQuote><lastAskPrice>0.0000</lastAskPrice><lastBidPrice>0.0000</lastBidPrice><lastQuoteTime>0</lastQuoteTime><nextQuoteTime>1382229660</nextQuoteTime><lastClearPrice>0.0000</lastClearPrice><lastClearTime>0</lastClearTime><finalClearTime>0</finalClearTime><nextClearTime>0</nextClearTime><hypotheticalQuantityWon> </hypotheticalQuantityWon><auctionStatus>1</auctionStatus><commandStatus>0</commandStatus></getQuote>' responseTime: 125 avg: 69.0 count: 51
+20/10 00:40:01 FINE aw.DummyAgent|All quotes for hotel have been updated
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277299</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 105 avg: 70.0 count: 52
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277299 ClearID=0
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277301</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 71.0 count: 53
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277301 ClearID=1
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277302</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 71.0 count: 54
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277302 ClearID=2
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277304</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 71.0 count: 55
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277304 ClearID=3
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277305</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 72.0 count: 56
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277305 ClearID=4
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277306</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>()</bidString><bidHash>()</bidHash><rejectReason>0</rejectReason><processingState>4</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>1382229600</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 72.0 count: 57
+20/10 00:40:01 FINEST aw.TACAgent|Requesting transactions for bid 3277306 ClearID=5
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277307</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((5 200.0000))</bidString><bidHash>((5 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 94 avg: 73.0 count: 58
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277307 auction=12 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((5 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277308</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((4 200.0000))</bidString><bidHash>((4 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 95 avg: 73.0 count: 59
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277308 auction=13 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((4 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277309</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((6 200.0000))</bidString><bidHash>((6 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 112 avg: 74.0 count: 60
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277309 auction=14 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((6 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277310</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 200.0000))</bidString><bidHash>((1 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 105 avg: 74.0 count: 61
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277310 auction=15 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277311</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-2 200.0000))</bidString><bidHash>((-2 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 106 avg: 75.0 count: 62
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277311 auction=16 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-2 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277312</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-4 200.0000))</bidString><bidHash>((-4 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 106 avg: 75.0 count: 63
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277312 auction=17 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-4 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277313</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0000))</bidString><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 107 avg: 76.0 count: 64
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277313 auction=20 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277315</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0000))</bidString><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 109 avg: 76.0 count: 65
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277315 auction=22 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277317</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0000))</bidString><bidHash>((1 50.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 219 avg: 78.0 count: 66
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277317 auction=26 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0000))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277318</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-1 200.0000))</bidString><bidHash>((-1 200.0000))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 219 avg: 80.0 count: 67
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277318 auction=27 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-1 200.0000))
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 16 (Alligator 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47309</auctionID><bidString>((-2 199.96333))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277345</bidID><bidHash>((-2 199.9633))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 148 avg: 81.0 count: 68
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 17 (Alligator 2)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47310</auctionID><bidString>((-4 199.96317))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277352</bidID><bidHash>((-4 199.9632))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 147 avg: 82.0 count: 69
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 20 (Amusement 1)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47313</auctionID><bidString>((1 50.031387))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277354</bidID><bidHash>((1 50.0314))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 143 avg: 83.0 count: 70
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 22 (Amusement 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47315</auctionID><bidString>((1 50.03153))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277358</bidID><bidHash>((1 50.0315))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 142 avg: 84.0 count: 71
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 26 (Museum 3)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47319</auctionID><bidString>((1 50.031666))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277361</bidID><bidHash>((1 50.0317))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 141 avg: 85.0 count: 72
+20/10 00:40:01 FINEST aw.TACMessage|submitting bid (submitBid) to auction 27 (Museum 4)
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<submitBid><auctionID>47320</auctionID><bidString>((-1 199.962))</bidString><expireTime>0</expireTime><expireMode>0</expireMode><divisible>1</divisible></submitBid>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><submitBid><bidID>3277367</bidID><bidHash>((-1 199.9620))</bidHash><rejectReason>0</rejectReason><commandStatus>0</commandStatus></submitBid>' responseTime: 142 avg: 86.0 count: 73
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transIDs><earliestTransID>-1</earliestTransID></transIDs>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transIDs><ids><list><transID>680443</transID><transID>680445</transID><transID>680446</transID><transID>680448</transID><transID>680449</transID><transID>680450</transID></list></ids><more>0</more><commandStatus>0</commandStatus></transIDs>' responseTime: 138 avg: 86.0 count: 74
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277345</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-2 199.9633))</bidString><bidHash>((-2 199.9633))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 57 avg: 86.0 count: 75
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277345 auction=16 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-2 199.9633))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277352</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-4 199.9632))</bidString><bidHash>((-4 199.9632))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 72 avg: 86.0 count: 76
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277352 auction=17 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-4 199.9632))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277354</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0314))</bidString><bidHash>((1 50.0314))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 75 avg: 86.0 count: 77
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277354 auction=20 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0314))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277358</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0315))</bidString><bidHash>((1 50.0315))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 75 avg: 85.0 count: 78
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277358 auction=22 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0315))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277361</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((1 50.0317))</bidString><bidHash>((1 50.0317))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 74 avg: 85.0 count: 79
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277361 auction=26 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((1 50.0317))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<bidInfo><bidID>3277367</bidID></bidInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><bidInfo><bidString>((-1 199.9620))</bidString><bidHash>((-1 199.9620))</bidHash><rejectReason>0</rejectReason><processingState>2</processingState><timeProcessed>1382229600</timeProcessed><timeClosed>0</timeClosed><withdrawState>0</withdrawState><timeWithdrawRequest>0</timeWithdrawRequest><timeWithdraw>0</timeWithdraw><commandStatus>0</commandStatus></bidInfo>' responseTime: 87 avg: 85.0 count: 80
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277367 auction=27 state=valid
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ((-1 199.9620))
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680443</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47293</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>289.0000</price><quantity>5.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 87 avg: 85.0 count: 81
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680445</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47295</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>364.0000</price><quantity>3.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 87 avg: 85.0 count: 82
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680446</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47297</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>377.0000</price><quantity>1.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 104 avg: 85.0 count: 83
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680448</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47298</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>307.0000</price><quantity>1.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 120 avg: 86.0 count: 84
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680449</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47299</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>341.0000</price><quantity>5.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 120 avg: 86.0 count: 85
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transInfo><transID>680450</transID></transInfo>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transInfo><auctionID>47300</auctionID><clearTime>1382229600</clearTime><tradePartyID>auction</tradePartyID><price>365.0000</price><quantity>1.0</quantity><commandStatus>0</commandStatus></transInfo>' responseTime: 121 avg: 87.0 count: 86
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277299 auction=0 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
+20/10 00:40:01 FINEST aw.TACMessage|XML out: '<transIDs><earliestTransID>680450</earliestTransID></transIDs>'
+20/10 00:40:01 FINEST aw.TACMessage|XML in: '<?xml version="1.0"?><transIDs><ids><list></list></ids><more>0</more><commandStatus>0</commandStatus></transIDs>' responseTime: 17 avg: 86.0 count: 87
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277301 auction=2 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277302 auction=4 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277304 auction=5 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277305 auction=6 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
+20/10 00:40:01 FINE aw.DummyAgent|Bid Updated: id=3277306 auction=7 state=transacted
+20/10 00:40:01 FINE aw.DummyAgent|       Hash: ()
