@@ -159,24 +159,15 @@ public class DummyAgent extends AgentImpl {
 	
 	private List<Map<Integer, Float>> Pz;
 
+	//INVESTIGATE: this code doesn't get called between games.
+	//				(re-)initialisation of values moved to gameStarted()
 	protected void init(ArgEnumerator args) {
 		bidPrices = new float[agent.getAuctionNo()];
 		currPrices = new float[agent.getAuctionNo()];
 		flightDeltas = new float[FLIGHTS];
 		
 		Pz = new ArrayList<Map<Integer, Float>>();
-		// cache the value of the uniform initial probability of any z
-		// INVESTIGATE: is there an off-by-one error here? surely there are 41 z values
-		float uniformP = 1.0f / (c+d);
-		for (int flight = 0; flight < FLIGHTS; flight++) {
-			TreeMap<Integer, Float> m = new TreeMap<Integer, Float>();
-			for (int z = 0-c; z <= d; z++) {
-				m.put(z, uniformP);
-			}
-			Pz.add(m);
-		}
-		log.fine("Initialised variables. Pz.size(): " + Pz.size() + " Pz[3].size(): " + Pz.get(3).size());
-		log.fine("		Pz[3].get(-2): " + Pz.get(3).get(-2));
+
 	}
 
 	public void quoteUpdated(Quote quote) {
@@ -230,8 +221,10 @@ public class DummyAgent extends AgentImpl {
 			flight_predictions((int) (seconds/1000));
 			expected_minimum_price((int) (seconds/1000));
 			for (int i = 0; i < FLIGHTS; i++) {
-				// if the game is ending soon, or current price is within 10% of the expected minimum and we need the flight
-				if (seconds > 500*1000 || currPrices[i] < 1.1 * bidPrices[i] && agent.getAllocation(i) - agent.getOwn(i) > 0) {
+				log.fine("Flight " + i + ": current price is " + currPrices[i] + ", expected minimum is " + bidPrices[i]);
+				// if the game is ending soon, or current price is within 5% of the expected minimum and we need the flight
+				if (seconds > 500*1000 || currPrices[i] < 1.05 * bidPrices[i] && agent.getAllocation(i) - agent.getOwn(i) > 0 && seconds > (20 + 10*i) * 1000) {
+					log.fine("Bidding.");
 					Bid bid = new Bid(i);
 					bid.addBidPoint(agent.getAllocation(i) - agent.getOwn(i), currPrices[i]);
 					if (DEBUG) {
@@ -250,10 +243,10 @@ public class DummyAgent extends AgentImpl {
 	}
 
 	public void bidUpdated(Bid bid) {
-		log.fine("Bid Updated: id=" + bid.getID() + " auction="
+		log.finer("Bid Updated: id=" + bid.getID() + " auction="
 			 + bid.getAuction() + " state="
 			 + bid.getProcessingStateAsString());
-		log.fine("       Hash: " + bid.getBidHash());
+		log.finer("       Hash: " + bid.getBidHash());
 	}
 
 	public void bidRejected(Bid bid) {
@@ -269,6 +262,23 @@ public class DummyAgent extends AgentImpl {
 
 	public void gameStarted() {
 		log.fine("Game " + agent.getGameID() + " started!");
+		
+		//reinitialise deltas and z-probabilities
+		flightDeltas = new float[FLIGHTS];
+		
+		Pz = new ArrayList<Map<Integer, Float>>();
+		// cache the value of the uniform initial probability of any z
+		// INVESTIGATE: is there an off-by-one error here? surely there are 41 z values
+		float uniformP = 1.0f / (c+d);
+		for (int flight = 0; flight < FLIGHTS; flight++) {
+			TreeMap<Integer, Float> m = new TreeMap<Integer, Float>();
+			for (int z = 0-c; z <= d; z++) {
+				m.put(z, uniformP);
+			}
+			Pz.add(m);
+		}
+		log.fine("Initialised variables. Pz.size(): " + Pz.size() + " Pz[3].size(): " + Pz.get(3).size());
+		log.fine("		Pz[3].get(-2): " + Pz.get(3).get(-2));
 
 		calculateAllocation();
 		sendBids();
@@ -288,10 +298,6 @@ public class DummyAgent extends AgentImpl {
 		log.fine("*** Auction " + auction + " closed!");
 	}
 
-	// -------------------------------------------------------------------
-	// Custom functions start here
-	// -------------------------------------------------------------------
-
 	// Nested class to represent ranges for flight value peturbations 
 	class Range {
 
@@ -306,10 +312,10 @@ public class DummyAgent extends AgentImpl {
 					return (number >= low && number <= high);
 			}
 
-			//TODO based upon algorithm 1
-			public Range( int c, int t, int z) {
+			//generates a valid range given hypothetical z and t in seconds
+			// (c and d are constants used in the generation of z by the server; 10 and 30 respectively)
+			public Range(int t, int z) {
 				float x = c + (t/T)*(z-c);
-//				log.fine("Given t " + t + " and " + z + ", x is " + x);
 				if (x > 0) {
 					this.low = 0-c;
 					this.high = x;
@@ -323,10 +329,12 @@ public class DummyAgent extends AgentImpl {
 				this.high = c;
 			}
 
+			// return the uniform probability of any int within the range
 			public float uniformP() {
 				return 1.0f / (high - low);
 			}
 
+			// return the midpoint of the range, used for expected values
 			public float getMid() {
 				return (high - low) / 2.0f;
 			}
@@ -337,6 +345,8 @@ public class DummyAgent extends AgentImpl {
 
 	}
 
+	// for each possible value of z for each flight, calculate the likelihood that that value
+	//  is the one the server is using to generate the prices
 	private void flight_predictions(int t) {
 		int flightNo = 0;
 		// for each flight (each initialised with possible values of z from -c to d [-10,30])
@@ -351,12 +361,12 @@ public class DummyAgent extends AgentImpl {
 			// for each remaining possible value of z
 			while (z.hasNext()) {
 				Entry<Integer, Float> p = (Entry<Integer, Float>)z.next();
-				r = new Range(c, t, p.getKey());		// calculate the range of possible values for y
+				r = new Range(t, p.getKey());		// calculate the range of possible values for y
 				if ( r.contains(flightDeltas[flightNo]) ) {								// if y is within range for this z
 					p.setValue( r.uniformP() * p.getValue());
 					runningTotal += p.getValue();
 				} else {
-					log.fine("" + currPrices[flightNo] + " is outside probable range: " + flightDeltas[flightNo] + " exceeds " + r.toString());
+					log.finest("" + currPrices[flightNo] + " is outside probable range: " + flightDeltas[flightNo] + " exceeds " + r.toString());
 					z.remove(); //this value of z cannot explain observed prices, discard it.
 				}
 			}
@@ -372,12 +382,12 @@ public class DummyAgent extends AgentImpl {
 		return;
 	}
 
-	//TODO: needs initial setting of p from current price of flight
+	// for each possible value of z for each flight, calculate the minima along an expected walk
+	//  take a weighted average of these minima according to the probabilites of z
 	private void expected_minimum_price(int t) {
 		int flightNo = 0;
 		// for each flight
 		for (Map<Integer, Float> flight : Pz) {
-//			log.fine("Calculating minima for " + flightNo + "; starting at " + currPrices[flightNo]);
 
 			float runningTotal = 0.0f;
 			//for each plausible value of z
@@ -387,22 +397,18 @@ public class DummyAgent extends AgentImpl {
 				//simulate forwards to the end of the game
 				for (int tau = t; tau <= T; tau+=10) {
 					//peturbing by naive expectations of delta
-					float delta = new Range(c, tau, z.getKey()).getMid();
+					float delta = new Range(tau, z.getKey()).getMid();
 					p = Math.max(FLIGHT_MIN, Math.min(FLIGHT_MAX, p + delta ));
 					//track the minimum price observed
 					if (p < min) {
-//						log.fine("New minimum: " + p + " for " + z.getKey() + " with P = " + z.getValue());
 						min = p;
 					}
 				}
 				// multiply min by the probability that this is the one true z
 				runningTotal += min * z.getValue();
 			}
-			// average out the possible expected minimums
-//			if (bidPrices[Pz.indexOf(flight)] > runningTotal / flight.size()) {
-				bidPrices[flightNo] = runningTotal;
-//				log.fine("" + runningTotal + " predicted, " + bidPrices[flightNo] + " stored for "+ flightNo);
-//			}
+			// set our expected minimum for this flight to the weighted average
+			bidPrices[flightNo] = runningTotal;
 			flightNo++;
 		}
 
@@ -413,11 +419,9 @@ public class DummyAgent extends AgentImpl {
 			int alloc = agent.getAllocation(i) - agent.getOwn(i);
 			float price = -1f;
 			switch (agent.getAuctionCategory(i)) {
-//			case TACAgent.CAT_FLIGHT:
-//				if (alloc > 0) {
-////					price = 1000;
-//				}
-//				break;
+			case TACAgent.CAT_FLIGHT:
+				// don't bid on flights at the start of the game
+				break;
 			case TACAgent.CAT_HOTEL:
 				if (alloc > 0) {
 					price = 200;
