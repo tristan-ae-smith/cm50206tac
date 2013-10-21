@@ -128,7 +128,10 @@
 package se.sics.tac.aw;
 import se.sics.tac.util.ArgEnumerator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.Map;
@@ -145,17 +148,35 @@ public class DummyAgent extends AgentImpl {
 	private static final float FLIGHT_MIN = 150.0f;
 	private static final float FLIGHT_MAX = 800.0f;
 
-	//------------------ int z = ??;	// z per flight : bound on final peturbation. Unknown
-	private static final int c = 10;	// -c : lower bound of possible z values
-	private static final int d = 30;	//  d : upper bound for 
-	private static final int T = 540; //  T : total game time in seconds
+	//------------------ int z = ??;		// z per flight : bound on final peturbation. Unknown
+	private static final int c = 10;		// -c : lower bound of possible z values
+	private static final int d = 30;		//  d : upper bound for 
+	private static final float T = 540.0f; 	//  T : total game time in seconds
 
-	private float[] prices;
-	private Map<Integer, Map<Integer, Float>> Pz;
+	private float[] bidPrices;
+	private float[] currPrices;
+	private float[] flightDeltas;
+	
+	private List<Map<Integer, Float>> Pz;
 
 	protected void init(ArgEnumerator args) {
-		prices = new float[agent.getAuctionNo()];
-		Pz = new TreeMap<Integer, Map<Integer, Float>>();
+		bidPrices = new float[agent.getAuctionNo()];
+		currPrices = new float[agent.getAuctionNo()];
+		flightDeltas = new float[FLIGHTS];
+		
+		Pz = new ArrayList<Map<Integer, Float>>();
+		// cache the value of the uniform initial probability of any z
+		// INVESTIGATE: is there an off-by-one error here? surely there are 41 z values
+		float uniformP = 1.0f / (c+d);
+		for (int flight = 0; flight < FLIGHTS; flight++) {
+			TreeMap<Integer, Float> m = new TreeMap<Integer, Float>();
+			for (int z = 0-c; z <= d; z++) {
+				m.put(z, uniformP);
+			}
+			Pz.add(m);
+		}
+		log.fine("Initialised variables. Pz.size(): " + Pz.size() + " Pz[3].size(): " + Pz.get(3).size());
+		log.fine("		Pz[3].get(-2): " + Pz.get(3).get(-2));
 	}
 
 	public void quoteUpdated(Quote quote) {
@@ -166,8 +187,8 @@ public class DummyAgent extends AgentImpl {
 			if (alloc > 0 && quote.hasHQW(agent.getBid(auction)) && quote.getHQW() < alloc) {
 				Bid bid = new Bid(auction);
 				// Can not own anything in hotel auctions...
-				prices[auction] = quote.getAskPrice() + 50;
-				bid.addBidPoint(alloc, prices[auction]);
+				bidPrices[auction] = quote.getAskPrice() + 50;
+				bid.addBidPoint(alloc, bidPrices[auction]);
 				if (DEBUG) {
 					log.finest("submitting bid with alloc="
 							 + agent.getAllocation(auction)
@@ -180,10 +201,10 @@ public class DummyAgent extends AgentImpl {
 			if (alloc != 0) {
 				Bid bid = new Bid(auction);
 				if (alloc < 0)
-					prices[auction] = 200f - (agent.getGameTime() * 120f) / 720000;
+					bidPrices[auction] = 200f - (agent.getGameTime() * 120f) / 720000;
 				else
-					prices[auction] = 50f + (agent.getGameTime() * 100f) / 720000;
-				bid.addBidPoint(alloc, prices[auction]);
+					bidPrices[auction] = 50f + (agent.getGameTime() * 100f) / 720000;
+				bid.addBidPoint(alloc, bidPrices[auction]);
 				if (DEBUG) {
 					log.finest("submitting bid with alloc="
 							 + agent.getAllocation(auction)
@@ -191,13 +212,29 @@ public class DummyAgent extends AgentImpl {
 				}
 				agent.submitBid(bid);
 			}
+		} else if (auctionCategory == TACAgent.CAT_FLIGHT) {
+			// calculate delta from last know price (ternary guard for initialisation spike)
+			flightDeltas[auction] = quote.getAskPrice() - ((currPrices[auction] > 0.0f)? currPrices[auction] : quote.getAskPrice());
+			currPrices[auction] = quote.getAskPrice();
+			log.fine("got quote for auction " + auction + " with price " + currPrices[auction] + "( delta: " + flightDeltas[auction] + ")");
 		}
 	}
 
 	public void quoteUpdated(int auctionCategory) {
 		log.fine("All quotes for "
 			 + agent.auctionCategoryToString(auctionCategory)
-			 + " has been updated");
+			 + " have been updated");
+		if (auctionCategory == TACAgent.CAT_FLIGHT) {
+			long seconds = agent.getGameTime();
+			log.fine("Predicting future flight minima after " + seconds/1000 + " seconds");
+			flight_predictions((int) (seconds/1000));
+			expected_minimum_price((int) (seconds/1000));
+			int i = 0;
+			for (float x: bidPrices) {
+				if (++i > 8) break;
+	            log.fine(x + ",");
+			}
+		}
 	}
 
 	public void bidUpdated(Bid bid) {
@@ -227,6 +264,12 @@ public class DummyAgent extends AgentImpl {
 
 	public void gameStopped() {
 		log.fine("Game Stopped!");
+		for (float x: bidPrices) {
+            log.fine(x + ",");
+		}
+		for (float x: currPrices) {
+            log.fine(x + ",");
+		}
 	}
 
 	public void auctionClosed(int auction) {
@@ -240,20 +283,21 @@ public class DummyAgent extends AgentImpl {
 	// Nested class to represent ranges for flight value peturbations 
 	class Range {
 
-			private int low, high;
+			private float low, high;
 
-			public Range(int l, int h){
+			public Range(float l, float h){
 					this.low = l;
 					this.high = h;
 			}
 
-			public boolean contains(int number){
+			public boolean contains(float number){
 					return (number >= low && number <= high);
 			}
 
 			//TODO based upon algorithm 1
 			public Range( int c, int t, int z) {
-				int x = c + (t/T)*(z-c);
+				float x = c + (t/T)*(z-c);
+//				log.fine("Given t " + t + " and " + z + ", x is " + x);
 				if (x > 0) {
 					this.low = 0-c;
 					this.high = x;
@@ -268,19 +312,25 @@ public class DummyAgent extends AgentImpl {
 			}
 
 			public float uniformP() {
-				return 1 / (high - low);
+				return 1.0f / (high - low);
 			}
 
 			public float getMid() {
-				return (high - low) / 2;
+				return (high - low) / 2.0f;
+			}
+			
+			public String toString() {
+				return "(" + this.low + ") - (" + this.high + ")";
 			}
 
 	}
 
-	private void flight_predictions(/*int c, int d, */int t, int y_t1, int Q_t) {
+	private void flight_predictions(int t) {
+		int flightNo = 0;
 		// for each flight (each initialised with possible values of z from -c to d [-10,30])
-		for (Map<Integer, Float> flight : Pz.values()) {
+		for (Map<Integer, Float> flight : Pz) {
 			
+			log.fine("Calculating for flight " + flightNo + "; " + flight.size() + " values for z remain.");
 			float runningTotal = 0;
 
 			Iterator<Entry<Integer, Float>> z = flight.entrySet().iterator();
@@ -288,20 +338,29 @@ public class DummyAgent extends AgentImpl {
 
 			// for each remaining possible value of z
 			while (z.hasNext()) {
-				z.next();
-				r = new Range(c, t, ((Entry<Integer,Float>) z).getKey());		// calculate the range of possible values for y
-				if ( r.contains(y_t1) ) {								// if y is within range for this z
-					((Entry<Integer, Float>) z).setValue( r.uniformP() * ((Entry<Integer,Float>) z).getValue());
-					runningTotal += ((Entry<Integer,Float>) z).getValue();
+				Entry<Integer, Float> p = (Entry<Integer, Float>)z.next();
+				r = new Range(c, t, p.getKey());		// calculate the range of possible values for y
+				if ( r.contains(flightDeltas[flightNo]) ) {								// if y is within range for this z
+//					log.fine("" + flightNo + "oldP: " + p.getValue());
+					p.setValue( r.uniformP() * p.getValue());
+//					log.fine("" + flightNo + "newP: " + p.getValue());
+					runningTotal += p.getValue();
+//					log.fine("" + flightNo + ": " + runningTotal);
 				} else {
+					log.fine("" + currPrices[flightNo] + " is outside probable range: " + flightDeltas[flightNo] + " exceeds " + r.toString());
 					z.remove(); //this value of z cannot explain observed prices, discard it.
 				}
 			}
-
+			
+			float newTotal = 0.0f;
 			// normalise the probablilities of each z value remaining plausible for this flight
-			for (Float p : flight.values()) {
-				p = p / runningTotal;
+			for (Entry<Integer, Float> p : flight.entrySet()) {
+				flight.put(p.getKey(), p.getValue()/runningTotal);
+				newTotal += p.getValue();
 			}
+			log.fine("After normalisation: " + newTotal);
+			
+			flightNo++;
 
 		}
 
@@ -310,21 +369,24 @@ public class DummyAgent extends AgentImpl {
 
 	//TODO: needs initial setting of p from current price of flight
 	private void expected_minimum_price(int t) {
+		int flightNo = 0;
 		// for each flight
-		for (Map.Entry<Integer, Map<Integer, Float>> flight : Pz.entrySet()) {
+		for (Map<Integer, Float> flight : Pz) {
+//			log.fine("Calculating minima for " + flightNo + "; starting at " + currPrices[flightNo]);
 
-			int runningTotal = 0;
+			float runningTotal = 0.0f;
 			//for each plausible value of z
-			for (Map.Entry<Integer, Float> z : flight.getValue().entrySet()) {
+			for (Map.Entry<Integer, Float> z : flight.entrySet()) {
 				float min = Float.POSITIVE_INFINITY;
-				float p = 0; //current price for this flight
+				float p = currPrices[flightNo]; //current price for this flight
 				//simulate forwards to the end of the game
-				for (int tau = t; tau <= T; tau++) {
+				for (int tau = t; tau <= T; tau+=10) {
 					//peturbing by naive expectations of delta
 					float delta = new Range(c, tau, z.getKey()).getMid();
 					p = Math.max(FLIGHT_MIN, Math.min(FLIGHT_MAX, p + delta ));
 					//track the minimum price observed
 					if (p < min) {
+//						log.fine("New minimum: " + p + " for " + z.getKey() + " with P = " + z.getValue());
 						min = p;
 					}
 				}
@@ -332,7 +394,11 @@ public class DummyAgent extends AgentImpl {
 				runningTotal += min * z.getValue();
 			}
 			// average out the possible expected minimums
-			prices[flight.getKey()] = runningTotal / flight.getValue().size();
+//			if (bidPrices[Pz.indexOf(flight)] > runningTotal / flight.size()) {
+				bidPrices[flightNo] = runningTotal;
+//				log.fine("" + runningTotal + " predicted, " + bidPrices[flightNo] + " stored for "+ flightNo);
+//			}
+			flightNo++;
 		}
 
 	}
@@ -350,16 +416,16 @@ public class DummyAgent extends AgentImpl {
 			case TACAgent.CAT_HOTEL:
 				if (alloc > 0) {
 					price = 200;
-					prices[i] = 200f;
+					bidPrices[i] = 200f;
 				}
 				break;
 			case TACAgent.CAT_ENTERTAINMENT:
 				if (alloc < 0) {
 					price = 200;
-					prices[i] = 200f;
+					bidPrices[i] = 200f;
 				} else if (alloc > 0) {
 					price = 50;
-					prices[i] = 50f;
+					bidPrices[i] = 50f;
 				}
 				break;
 			default:
