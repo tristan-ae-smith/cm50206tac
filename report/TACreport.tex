@@ -1,8 +1,8 @@
 \documentclass[oribibl]{llncs}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color}
-% \definecolor{darkgreen}{rgb}{0,0.6,0}
-% \definecolor{javapurple}{rgb}{0.5,0,0.35}
+\usepackage{textcomp}
+\setcounter{secnumdepth}{3}
 
 \begin{document}
 
@@ -14,24 +14,68 @@
 \maketitle
 
 \begin{abstract}
-Lorem ipsum\cite{greenwald2009roxybot}
+TACCA is an autonomous bidding agent designed to compete in Trading Agent Competition tournaments. The final implementation is a hybrid approach melding techniques from a number of previous agents and custom improvements. This paper details the overall architecture of the Tacca implementation, and comments on the outcome of a sample tournament against other agents implemented in a similar context.
 \end{abstract}
 
 \section{Introduction}
-\cite{wellman2003price}
+This paper describes the design and implementation of `TACCA': a Trading Agent Competition Competitive Agent. The purpose of the competition is to make a number of informed decisions about the purchase of commodities in three varied markets, within an environment of limited time and information, and in competition with other agents pursuing similar objectives. It is an open academic research problem with annual competitions and multiple dedicated teams. Given the wealth of published papers available describing possible (and occasionally successful) approaches to the challenge, Tacca is based on a number of known good approaches, most significantly that of RoxyBot \cite{greenwald2009roxybot}, the winner of the 2006 TAC tournament.
 
-\section{NLG and the Semantic Web}
+\subsection{Overview}
+This paper begins with a very brief description of the Trading Agent Competition, in order to give context for the high-level description of RoxyBot, the agent on which the initial approach was modelled. After explaining the approach taken to high-level choices of algorithm, the actual implementation of modules within Tacca is then detailed, followed by a critical analysis of the performance of the final approach, a discussion of the competition results, and a number of suggestions for possible future improvements to the agent. Finally, the entire source of the modified DummyAgent.java file is presented in Appendix \ref{A:source}.
 
+\section{Background}
+The TAC consists of three main challenges: purchasing flights (which generally increase in price over time), bidding on hotels (sixteenth-price auctions which close randomly through the round), and buying and selling entertainment tickets (continuous double auctions between agents). The overall challenge is to purchase from all three markets sufficient commodities to construct valid trips, which are scored according to client preferences. A typical approach is to develop methods for predicting opportune moments to purchase each of the three types of commodity \cite{stone2002attac}, with optionally some overall optimisation method used to allow predictions about each market to inform purchasing decisions in the other two. This optimisation approach is the one taken by RoxyBot \cite{lee2007roxybot}.
 
-\subsection{NLG for Ontology Engineering}
+Greenwald, Lee, \& Naroditskiy describe an implementation that uses tailored methods for each market to produce predicted future pricelines, and then a two-stage stochastic optimiser in order to select reasonable prices to bid `now' and `later' \cite{greenwald2009roxybot}. Three different approaches are used to the priceline generation problem:
+\begin{description}
+\item[Flights:] Though flight prices vary according to a semi-random walk, the TAC model for generating this walk is well understood \cite{cheng2005walverine}, and depends on a single hidden variable $z$ for each flight. RoxyBot uses Bayesian updating to model a probability distribution for $z$, and hence predict estimated minima in the expected random walk.
+\item[Hotels:] RoxyBot simulates Simultaneous Ascending Auctions in order to predict competitive equilibrium prices for each hotel, and hence appropriate maximum bids \cite{cramton2006simultaneous}. A number of minor optimisations are implemented in order to provide more accurate long-term predictions.
+\item[Entertainment:] Optimistic predictions are made using sampled historical data from the logs of the last 40 games. Estimates at any given time are based upon historical data for that period, and estimates for future times are based on the minima across all future times.
+\end{description}
+The generated pricelines from these algorithms are used as input to an $n$-stage stochastic optimiser, which for simplicity is collapsed to a two-stage problem -- ``current'' and ``future''. Sample average approximation is used as a reasonable heuristic for solving the bidding problem, and bidding decisions and bid amounts are predicated on the output of the optimiser.
 
+\section{Approach}
+According to an analysis of previous international TAC tournament competitors, `taking into account game-specific information about flight prices is a major distinguishing factor [in the relative efficacy of alternative approaches].' \cite{wellman2003price}. Therefore initial implementation efforts were directed towards reimplementing the Bayesian updating method used by RoxyBot to estimate probability distributions for $z$, and generate future minima for each flight to inform bidding decisions. This constrained the time available to reimplement the other RoxyBot modules (hotel and entertainment priceline generation, overall optimisation), and so less complex approaches were chosen to improve hotel and entertainment bidding decisions.
 
-\subsection{NLG for Publication}
+% pulls in ideas from background reading
+% The design should be as modular as possible, allowing reuse of code. Furthermore, the design should anticipate possible extensions of the software.
+% Modelled on an apporach taken by a previuous winner of the international TAC competition.
 
+\section{Implementation}
+Using the provided \texttt{DummyAgent.java} as an initial implementation of the three bidding strategies, incremental improvements were constructed and tested on the public practice servers. Mercurial was used for version control in order to allow easy reversion of approaches that proved unhelpful overall.
+% A project description
+% A detailed description of the bidding strategy for each of flight, hotel and entertainment package 
+% A justification for the decisions made
 
-\section{Future Work}
+\subsection{Flights}
+The flight prediction approach was modelled on the implementation in RoxyBot \cite{lee2007roxybot}, which uses Bayesian updating to model and refine a probability distribution for the possible values of the hidden variable $z$, in the range $[-10,30]$. The TAC server uses $z$ to influence the progress of the random price walk of each flight - generally for values of $z < 0$, the price will tend to decrease over time, while for values $z > 0$ the reverse is true \cite{cheng2005walverine}. For each possible value of $z$ the price may be randomly perturbed within a given range; therefore Tacca defines a Range class in order to model the expectation of these possibilities, compare them to known pricing data received from the server, and use Bayesian inference to update the probability distribution for $z$.
 
-\section{Conclusions}
+In order to provide predictions of future minima, an expected walk is generated using the current price of the flight and each of the remaining possible values for $z$. A weighted sum of the minimum of each walk is then calculated, using the individual probability of each value of $z$. Finally, this expected minimum is compared to the current price, and a bid placed once sufficient confidence is reached that the current price is less than probable future prices.
+
+\subsection{Hotels}
+The hotel allocation and purchase approach that Tacca uses is very closely modelled on the one supplied in the default implementation -- ideally dynamic reallocation would be possible based upon the flight pricelines, but time constraints made this infeasible.
+
+\subsection{Entertainment}
+Tacca improves upon the na\"{\i}ve entertainment allocations made by the \texttt{DummyAgent} class. In the original implementation, each client is assigned only their most preferred entertainment type if it is available within the initial allocation of tickets, or an attempt is made to purchase it for the first day of their visit if it is not already owned. Tacca uses a more complex approach which allocates each client at least one ticket from the initial allocation in order of preference, and then additional allocations are made so long as there are entertainments available on valid days. Finally, tickets are selected for purchase to ensure that each client receives at least one entertainment ticket -- preferably their first choice.
+
+\section{Critical analysis}
+\subsection{Competition Results}
+Despite maintaining reasonably good standings on the available practice servers, Tacca performed relatively poorly in the overall competition rankings coming in 23rd out of 30 competitors, with an average score just under a third of the highest-performing agent's. %possible table here
+There appear to be a number of contributing factors to this result. As described above, in the absence of hotel price prediction and overall purchasing optimisation, the flight price minima prediction provides a small overall benefit at best. The combination of the minima prediction and the improved entertainment allocation was enough to ensure consistently good performance on the available public practice servers, however logs from public practice indicate that only a small sample of the other agents competed on the public servers contemporaneously with Tacca, and this sample was skewed as it contained none of the ultimately top-performing agents in the competition proper. Competition logs reveal that Tacca's low average score is largely driven by a significant number of games with negative outcomes - where flights were purchased and entertainments retained, but insufficient hotel nights purchased to complete valid packages. This indicates that other agents with more aggressive or intelligent hotel purchasing strategies were more successful in the competition for limited hotel availability. Ultimately, Tacca achieved a reasonable positive score, though did not score as well as the majority of the other agents.
+
+\subsection{Possible Improvements}
+Given the low overall placement of Tacca in the competition rankings, it is apparent that a number of improvements are possible. Evidently, given RoxyBot's track record in the international competitions, complete reimplementation of RoxyBot would have been likely to perform well. Specifically, it would also have greatly improved the utility of the flight prediction model as without the ability to optimise hotel purchases around cheap flights, the benefit of the minima prediction is reduced solely to the ability to buy decreasing flights (roughly \textonequarter of the total flights) cheaply. Unfortunately, the limited timescale made achieving a complete reimplementation challenging, resulting in the hybrid agent presented. Looking specifically at the approaches for each market that were eventually implemented, there are a number of small but significant improvements that could still have been implemented.
+
+\subsubsection{Flights}
+In some cases Tacca delayed the purchase of flights beyond the point necessary to have reasonable confidence in the probability distribution of $z$. A heuristic approach could be taken to analyse whether any particular value was probable beyond a certain threshold or number of standard deviations. Given appropriate tuning, this could allow Tacca to bid earlier on flights that were most likely to solely increase in price throughout the game.
+
+\subsubsection{Entertainment}
+Though the entertainment allocation and purchasing approach works well in the early stages of the game, making prudent use of the initially supplied tickets, there are a number of minor alterations that would have resulted in more efficient purchasing and selling. The clients' desires are only considered during the initial allocation phase, and in the case of no relevant entertainments existing in the initial allocation a single preferred entertainment type and date is na\"{\i}vely selected for future purchase. Rather than a single allocation, a structure representing the client's assigned value for each entertainment could be constructed and queried whenever entertainment prices changed, and a relevant entertainment purchased only whenever it was available below the client's relevant cost. Similarly, once the initially allocated entertainments are purchased, they are retained for the remainder of the game regardless of the market fluctuations. The same structure of clients' proposed prices could be used to calculate the marginal utility of selling any given entertainment at any given time, and then make them available on the market whenever the predicted utility passes a certain threshold. These improvements to the purchase and sale of entertainment tickets would likely result in fewer allocations of owned entertainments to clients, and greater overall profit due to cheaper purchases and sale of valuable tickets.
+
+\subsubsection{Hotels}
+The generation of future pricelines by the flight price prediction module should in theory allow optimisation over hotel selection by enabling dynamic reallocation of trip dates and duration in order to take advantage of savings available from cheap flights -- wherever these outweigh the transport penalty for alteration from client preferences. This would also work in reverse -- if hotels were available unusually cheaply due to low demand, an optimiser could also dynamically reallocate the flight selection. Unfortunately the time constraints did not allow for successful implementation of RoxyBot's optimisation strategy.
+
+% \section{Conclusion}
 
 \newpage
 \bibliographystyle{splncs03}
@@ -39,8 +83,8 @@ Lorem ipsum\cite{greenwald2009roxybot}
 
 \newpage
 \appendix
-\section{Source Listing}
-Modified DummyAgent.java, licensing skipped
+\section{Source Listing}\label{A:source}
+Modified DummyAgent.java, licensing and comment header skipped
 \lstset{language=Java,basicstyle=\small\ttfamily,numbers=left,numberstyle=\tiny,numbersep=5pt,breaklines=true,tabsize=2,commentstyle=\ttfamily\color{OliveGreen},keywordstyle=\color{DarkOrchid}\bfseries,stringstyle=\color{Tan},identifierstyle=\color{RoyalBlue},showstringspaces=false}
 \lstinputlisting[firstline=128,firstnumber=128]{../se/sics/tac/aw/DummyAgent.java}
 \end{document}
